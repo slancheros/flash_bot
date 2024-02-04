@@ -21,7 +21,7 @@ def read_root():
 @api.post("/")
 def slack_challenge(request:Request):
     print(request)
-    if request.json and "challenge" in request.json:
+    if request.get("challenge"):
         print("Received challenge")
         return Response(content="challenge", media_type="application/json")
     else:
