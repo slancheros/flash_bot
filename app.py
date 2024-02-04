@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request, Response,Form
 from logging import Logger
 from pydantic import BaseModel
 import os
@@ -36,7 +36,7 @@ def slack_challenge(item:Item):
     return
 
 api.post("/llm_bot")
-def slack_slash(text: str):
+def slack_slash(text: str = Form("missing argument", max_length=20)):
 
     if text == "help":
         result = {
