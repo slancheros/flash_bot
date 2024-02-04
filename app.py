@@ -51,15 +51,11 @@ def slack_slash(text: str = Form("missing argument", max_length=20)):
             }
     return result
 
-""" @slack_app.command("/llm_bot")
+@slack_app.command("/llm_bot")
 def llm(ack, respond, command):
     ack()
-    respond("Prompt: *%s*"%command['text']) """
+    respond("Prompt: *%s*"%command['text']) 
 
-@slack_app.event("app_mention")
-def handle_app_mentions(body, say, logger):
-    logger.info(body)
-    say("What's up?")
 
 
 @api.post("/slack/events")
