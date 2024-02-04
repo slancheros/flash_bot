@@ -34,17 +34,12 @@ def slack_challenge(item:Item):
     else:
         print("Got unknown request incoming")
     return
-""" 
-"body": { 
-	 "type": "url_verification",
-	 "token": "",
-	 "challenge": ""
-} """
+
 
 @slack_app.command("/llm_bot")
-def llm(ack, say):
+def llm(ack, respond, command):
     ack("Received /llm command.")
-    say("Hello, LLM!")
+    respond(command)
 
 @slack_app.event("app_mention")
 def handle_app_mentions(body, say, logger):
