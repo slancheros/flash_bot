@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
+from requests import request
 from logging import Logger
 import os
 
@@ -17,6 +18,20 @@ app_handler = SlackRequestHandler(slack_app)
 @api.get("/")
 def read_root():
     return {"Hello": "World"}
+
+@api.post("/")
+def slack_challenge():
+    if request.json and "challenge" in request.json:
+        print("Received challenge")
+        return Response(content="challenge", media_type="application/json")
+    else:
+        print("Got unknown request incoming")
+        print(request.json)
+    return
+
+@api.event("message")
+def handle_message():
+    pass
 
 @slack_app.command("/llm_bot")
 def llm(ack, say):
