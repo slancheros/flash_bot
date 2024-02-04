@@ -28,9 +28,7 @@ def slack_challenge(request:Request):
         print(request.json)
     return
 
-@api.event("message")
-def handle_message():
-    pass
+
 
 @slack_app.command("/llm_bot")
 def llm(ack, say):
