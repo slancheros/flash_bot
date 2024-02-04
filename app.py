@@ -38,8 +38,8 @@ def slack_challenge(item:Item):
 
 @slack_app.command("/llm_bot")
 def llm(ack, respond, command):
-    ack("Received /llm command.")
-    respond(command)
+    ack()
+    respond("Prompt: *%s*"%command['text'])
 
 @slack_app.event("app_mention")
 def handle_app_mentions(body, say, logger):
