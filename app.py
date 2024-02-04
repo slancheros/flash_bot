@@ -35,21 +35,7 @@ def slack_challenge(item:Item):
         print("Got unknown request incoming")
     return
 
-api.post("/llm_bot")
-def slack_slash(text: str = Form("missing argument", max_length=20)):
 
-    if text == "help":
-        result = {
-            "response_type": "in_channel",
-            "text": """Hi there! I accept the following commands:
-            `/aci health` - show total system health
-            """
-            }
-    else:
-        result = {
-            "text": "_" + text + "_? I don't know what you're talking about. Please visit `/aci help`"
-            }
-    return result
 
 @slack_app.command("/llm_bot")
 def llm(ack, respond, command):
