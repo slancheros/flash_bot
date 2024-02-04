@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Request, Response
-from requests import request
 from logging import Logger
 import os
 
@@ -20,7 +19,7 @@ def read_root():
     return {"Hello": "World"}
 
 @api.post("/")
-def slack_challenge():
+def slack_challenge(request:Request):
     if request.json and "challenge" in request.json:
         print("Received challenge")
         return Response(content="challenge", media_type="application/json")
