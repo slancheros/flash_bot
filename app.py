@@ -23,7 +23,7 @@ def slack_challenge(request:Request):
     print(request)
     if request.get("challenge"):
         print("Received challenge")
-        return Response(content="challenge", media_type="application/json")
+        return Response(content=request.get("challenge"), media_type="application/json")
     else:
         print("Got unknown request incoming")
         print(request.json)
